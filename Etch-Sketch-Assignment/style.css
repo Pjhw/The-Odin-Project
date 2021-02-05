@@ -1,0 +1,51 @@
+body{
+    background-color: #136f63;
+    margin: 0;
+    color: #E8Fcc2;
+}
+
+#title{
+    text-align: center;
+}
+
+#button-container{
+    margin: auto;
+    width: 550px;
+    padding: 10px;
+
+}
+
+.button{
+    color: #e8fcc2;
+    background-color: #717fb9e0;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: .2s;
+    margin-left: 10px;
+}
+
+.button:hover{
+    background-color: #717fb985 ;
+}
+
+.size-label{
+    font-size: 20px;
+}
+
+
+
+#sketch-board{
+    display: grid;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    border-top: 8px solid brown;
+    border-right: 8px solid brown;
+    border-bottom: 8px solid rgb(136, 92, 92);
+    border-left: 8px solid rgb(136, 92, 92);
+}
+
+.sketch-square{
+    transition: .3s;
+}

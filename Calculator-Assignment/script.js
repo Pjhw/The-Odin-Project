@@ -111,7 +111,7 @@ function addListeners(){
 
 
 
-    //Keyboard Event Listener
+    //Keyboard Event Listeners
     const keyListener = document.getElementById("content");
     keyListener.addEventListener("keypress", function (e){
         let key = e.key;
@@ -160,6 +160,7 @@ function addListeners(){
 
 function operate(operator){
 
+    //First operator of the current query has been entered
     if(!loadedOperator){
         if(operator != "="){
             loadedOperator = true;
@@ -171,6 +172,7 @@ function operate(operator){
         evaluated = true;
     }
 
+    //Subsequent operators are being added to the query
     else{
 
         //If an operator is placed without another number between,
@@ -210,7 +212,7 @@ function operate(operator){
 
         currentOperator = operator;
 
-        if(currentInput === "Infinity"){
+        if(currentInput === "Infinity" || currentInput === "NaN"){
             history = divisionByZero;
             currentInput = "0";
         }

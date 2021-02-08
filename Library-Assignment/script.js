@@ -41,7 +41,7 @@ function addBookToLibrary(title, author, pages, read){
 
     titleDiv.innerHTML = title;
     authorDiv.innerHTML = author;
-    pagesDiv.innerHTML = pages;
+    pagesDiv.innerHTML = pages + " Pages";
     if(read) readDiv.innerHTML = "Read";
     else readDiv.innerHTML = "Not Read"
 

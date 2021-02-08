@@ -1,7 +1,7 @@
 let currentInput = "0";
 let previousInput = "0";
-
 let history = "0";
+
 let currentOperator = "";
 let loadedOperator = false;
 let evaluated = false;
@@ -116,8 +116,6 @@ function addListeners(){
     keyListener.addEventListener("keypress", function (e){
         let key = e.key;
 
-        e.k
-
         if(key === "1") inputNumber(1);
         else if(key === "2") inputNumber(2);
         else if(key === "3") inputNumber(3);
@@ -138,17 +136,11 @@ function addListeners(){
         else if(key === "Enter") operate("=");
         else if(key === "=") operate("=");
 
-        else if(key === "Delete") backspace();
-
-        else if(key === "Escape") clear();
-
     });
 
     const keyListener2 = document.getElementById("content");
     keyListener2.addEventListener("keydown", function (e){
         let key = e.key;
-
-        e.k
 
         if(key === "Backspace") backspace();
 
@@ -172,6 +164,7 @@ function operate(operator){
         evaluated = true;
     }
 
+    
     //Subsequent operators are being added to the query
     else{
 
@@ -187,19 +180,19 @@ function operate(operator){
 
             switch(currentOperator){
                 case "/":
-                    currentInput = (parseInt(previousInput) / parseInt(currentInput)).toString();
+                    currentInput = (parseFloat(previousInput) / parseFloat(currentInput)).toString();
                     break;
 
                 case "*":
-                    currentInput = (parseInt(previousInput) * parseInt(currentInput)).toString();
+                    currentInput = (parseFloat(previousInput) * parseFloat(currentInput)).toString();
                     break;
 
                 case "+":
-                    currentInput = (parseInt(previousInput) + parseInt(currentInput)).toString();
+                    currentInput = (parseFloat(previousInput) + parseFloat(currentInput)).toString();
                     break;
 
                 case "-":
-                    currentInput = (parseInt(previousInput) - parseInt(currentInput)).toString();
+                    currentInput = (parseFloat(previousInput) - parseFloat(currentInput)).toString();
                     break;
 
                 case "=":

@@ -1,10 +1,12 @@
 let bookLibrary = [];
 
-function Book(title, author, pages, read){
+function Book(title, author, pages, read, index){
     this.title = title;
     this.author = author;
     this.pages = pages;
     this.read = read;
+
+    this.index = index;
 }
 
 Book.prototype.printInfo = function(){
@@ -18,7 +20,7 @@ Book.prototype.printInfo = function(){
 }
 
 function addBookToLibrary(title, author, pages, read){
-    let book = new Book(title, author, pages,read);
+    let book = new Book(title, author, pages,read, bookLibrary.length);
 
     bookLibrary.push(book);
 
@@ -36,23 +38,73 @@ function addBookToLibrary(title, author, pages, read){
     let pagesDiv = document.createElement("div");
     pagesDiv.classList.add("pages");
 
-    let readDiv = document.createElement("div");
-    readDiv.classList.add("read");
+    let readButton = document.createElement("button");
+    readButton.classList.add("read");
+
+    readButton.addEventListener("click", function(e){
+        toggleRead(book.index);
+    });
+
+
 
     titleDiv.innerHTML = title;
     authorDiv.innerHTML = author;
     pagesDiv.innerHTML = pages + " Pages";
-    if(read) readDiv.innerHTML = "Read";
-    else readDiv.innerHTML = "Not Read"
+    if(read) readButton.innerHTML = "Read";
+    else readButton.innerHTML = "Not Read"
+
+    let deleteButton = document.createElement("button");
+    deleteButton.innerHTML = "Delete";
+    deleteButton.classList.add("delete-button");
+
+    deleteButton.addEventListener("click", function(e){
+        removeBook(book.index);
+    });
+
 
     bookDiv.appendChild(titleDiv);
     bookDiv.appendChild(authorDiv);
     bookDiv.appendChild(pagesDiv);
-    bookDiv.appendChild(readDiv);
+    bookDiv.appendChild(readButton);
+    bookDiv.appendChild(deleteButton);
 
     bookshelf.appendChild(bookDiv);
 
+    
+    
+}
 
+function removeBook(index){
+    
+    bookLibrary.splice(index, index+1);
+
+    for(let i = index; i < bookLibrary.length; i++){
+        bookLibrary[i].index--;
+    }
+
+    let bookshelf = document.getElementById("bookshelf");
+    let book = document.getElementsByClassName("book")[index];
+    
+    bookshelf.removeChild(book);
+
+
+}
+
+function toggleRead(index){
+    book = bookLibrary[index];
+
+    let bookshelf = document.getElementById("bookshelf"); 
+    let button = document.getElementsByClassName("book")[index].getElementsByClassName("read")[0];
+
+    if(book.read){
+        book.read = false;
+        button.innerHTML = "Not Read";
+    } 
+
+    else {
+        book.read = true;
+        button.innerHTML = "Read";
+    }
 }
 
 let submitButton = document.getElementById("submit");
@@ -75,5 +127,5 @@ submitButton.addEventListener("click", function(e){
 });
 
 addBookToLibrary("Harry Potter", "J.K. Rowling", 500, true);
-addBookToLibrary("Harry Potter", "J.K. Rowling", 500, true);
+addBookToLibrary("Name of the Wind", "J.K. Rowling", 500, true);
 

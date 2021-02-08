@@ -110,5 +110,12 @@ input{
 }
 
 .read{
-    font-size: 20px;
+    font-size: 15px;
+}
+
+.delete-button{
+    font-size: 15px;
+    width: 90px;
+    padding: 0; 
+    margin: 10px;
 }

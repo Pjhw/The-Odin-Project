@@ -40,9 +40,19 @@ function addBookToLibrary(title, author, pages, read){
 
     let readButton = document.createElement("button");
     readButton.classList.add("read");
+    readButton.classList.add("button");
 
     readButton.addEventListener("click", function(e){
         toggleRead(book.index);
+    });
+
+
+    let deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-button");
+    deleteButton.classList.add("button");
+
+    deleteButton.addEventListener("click", function(e){
+        removeBook(book.index);
     });
 
 
@@ -50,16 +60,19 @@ function addBookToLibrary(title, author, pages, read){
     titleDiv.innerHTML = title;
     authorDiv.innerHTML = author;
     pagesDiv.innerHTML = pages + " Pages";
-    if(read) readButton.innerHTML = "Read";
-    else readButton.innerHTML = "Not Read"
-
-    let deleteButton = document.createElement("button");
+    if(read) {
+        readButton.innerHTML = "Read";
+        readButton.style["color"] = "rgb(32, 202, 32)";
+        readButton.style["box-shadow"] = "0 0 6px rgb(32, 202, 32)";
+    }
+    else {
+        readButton.innerHTML = "Not Read";
+        readButton.style["color"] = "rgb(255, 91, 86)";
+        readButton.style["box-shadow"] = "0 0 6px rgb(255, 91, 86)";
+    }
     deleteButton.innerHTML = "Delete";
-    deleteButton.classList.add("delete-button");
 
-    deleteButton.addEventListener("click", function(e){
-        removeBook(book.index);
-    });
+
 
 
     bookDiv.appendChild(titleDiv);
@@ -99,11 +112,17 @@ function toggleRead(index){
     if(book.read){
         book.read = false;
         button.innerHTML = "Not Read";
+
+        button.style["color"] = "rgb(255, 91, 86)";
+        button.style["box-shadow"] = "0 0 6px rgb(255, 91, 86)";
     } 
 
     else {
         book.read = true;
         button.innerHTML = "Read";
+
+        button.style["color"] = "rgb(32, 202, 32)";
+        button.style["box-shadow"] = "0 0 6px rgb(32, 202, 32)";
     }
 }
 
@@ -126,6 +145,6 @@ submitButton.addEventListener("click", function(e){
     bookPages.value = "";
 });
 
-addBookToLibrary("Harry Potter", "J.K. Rowling", 500, true);
-addBookToLibrary("Name of the Wind", "J.K. Rowling", 500, true);
+addBookToLibrary("Harry Potter", "J.K. Rowling", 293, true);
+addBookToLibrary("Name of the Wind", "Patrick Rothfuss", 662, true);
 

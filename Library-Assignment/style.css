@@ -72,13 +72,13 @@ input{
   
 }
 
-@media (max-width:950px){
+@media (max-width:1200px){
     #bookshelf{
         grid-template-columns: repeat(2, 1fr);
     }
 }
 
-@media (max-width:700px){
+@media (max-width:850px){
     #bookshelf{
         grid-template-columns: repeat(1, 1fr);
     }
@@ -87,6 +87,12 @@ input{
 .book{
     display: grid;
     justify-items: center;
+
+    grid-template-areas: 
+    "title title"
+    "author author"
+    "pages pages"
+    "read delete";
 
     width: 280px;
     height: 280px;
@@ -98,24 +104,55 @@ input{
 }
 
 .title{
-    font-size: 30px;
+    font-size:28px;
+    grid-area: title;
 }
 
 .author{
     font-size: 25px;
+    grid-area: author;
 }
 
 .pages{
     font-size: 20px;
+    grid-area: pages;
+}
+
+.button{
+    margin: 10px;
+    width: 90px;
+    font-size: 16px;
+    border-radius: 20px;
 }
 
 .read{
-    font-size: 15px;
+    grid-area: read;
+
+    background-color: rgba(88, 98, 121, 0.671);
+    color: rgb(255, 91, 86);
+
+    border: none;
+    box-shadow: 0 0 6px rgb(32, 202, 32);
+}
+
+.read:hover{
+    background-color: rgba(103, 115, 143, 0.671);
+}
+
+.read:focus{
+    
 }
 
 .delete-button{
-    font-size: 15px;
-    width: 90px;
-    padding: 0; 
-    margin: 10px;
+    grid-area: delete;
+    background-color: rgba(88, 98, 121, 0.671);
+
+    color: rgba(224, 221, 213, 0.801);
+
+    border: none;
+    box-shadow: 0 0 6px rgba(168, 187, 168, 0.801);
+}
+
+.delete-button:hover{
+    background-color: rgba(103, 115, 143, 0.671);
 }
